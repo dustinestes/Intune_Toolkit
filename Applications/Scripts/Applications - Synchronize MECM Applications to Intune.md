@@ -282,7 +282,7 @@ This is a class containing all of the Content information specific to the Intune
 | Type       | PropertyName   | MECM Source                                                                             | Intune Source | Example                                                   |
 |------------|----------------|-----------------------------------------------------------------------------------------|---------------|-----------------------------------------------------------|
 | [String]   | $Context       | SMS_DeploymentType.SDMPackageXML.Installer.DetectAction.Args.Arg.ExecutionContext       | N/A           | TODO                                                      |
-| [Int]      | $ScriptType    | SMS_DeploymentType.SDMPackageXML.Installer.DetectAction.Args.Arg.ScriptType             | N/A           | TODO                                                      |
+| [String]   | $ScriptType    | SMS_DeploymentType.SDMPackageXML.Installer.DetectAction.Args.Arg.ScriptType             | N/A           | TODO                                                      |
 | [String]   | $ScriptBody    | SMS_DeploymentType.SDMPackageXML.Installer.DetectAction.Args.Arg.ScriptBody             | N/A           | TODO                                                      |
 | [Bool]     | $RunAs32Bit    | SMS_DeploymentType.SDMPackageXML.Installer.DetectAction.Args.Arg.RunAs32Bit             | N/A           | TODO                                                      |
 
@@ -440,7 +440,7 @@ PowerShell Script Debugging
                 "-Source",
                   "MECM",
                 "-SMSProvider",
-                    "\"0003wp-mecm-01v.flightsafety.com\"",
+                    "\"0001-mecm-01v.domain.com\"",
                 "-AdminCategory",
                     "\"Intune Sync\"",
                 "-IntunePrepToolPath",

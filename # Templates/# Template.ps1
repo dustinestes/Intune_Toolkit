@@ -155,25 +155,25 @@ Start-Transcript -Path "$($env:ProgramFiles)\VividRock\Intune Toolkit\Logs\Appli
 
     }
   }
-    
+
   # Write Error Codes
   Write-Host "    - Write-vr_ErrorCode"
   function Write-vr_ErrorCode ($Code,$Exit,$Object) {
     # Code: XXXX   4-digit code to identify where in script the operation failed
     # Exit: Boolean option to define if  exits or not
     # Object: The error object created when the script encounters an error ($Error[0], $PSItem, etc.)
-    
+
     begin {
-      
+
     }
-    
+
     process {
       Write-Host "        Error: $($Object.Exception.ErrorId)"
       Write-Host "        Command Name: $($Object.CategoryInfo.Activity)"
       Write-Host "        Message: $($Object.Exception.Message)"
       Write-Host "        Line/Position: $($Object.Exception.Line)/$($Object.Exception.Offset)"
     }
-    
+
     end {
       switch ($Exit) {
         $true {
@@ -189,75 +189,6 @@ Start-Transcript -Path "$($env:ProgramFiles)\VividRock\Intune Toolkit\Logs\Appli
         }
       }
     }
-  }
-  
-  # Connect to Microsoft Graph
-  Write-Host "    - Connect-MsGraph"
-  function Connect-MsGraph {
-    [CmdletBinding()]
-    param (
-      [Parameter(Mandatory=$false)]
-      [string]$TenantId,
-      [Parameter(Mandatory=$false)]
-      [string]$ClientId,
-      [Parameter(Mandatory=$false)]
-      [string]$ClientSecret,
-      [Parameter(Mandatory=$false)]
-      [string[]]$Scopes
-    )
-
-    begin {
-
-    }
-
-    process {
-      try {
-        # Install Required Modules if not present
-        if (-not (Get-Module -ListAvailable -Name "Microsoft.Graph.Authentication")) {
-          Install-Module -Name "Microsoft.Graph.Authentication" -Force -Scope CurrentUser
-        }
-  
-        # Connect using interactive authentication if no credentials provided
-        if (-not $TenantId -or -not $ClientId -or -not $ClientSecret) {
-          Write-Host "Connecting to Microsoft Graph using interactive authentication..."
-          Connect-MgGraph -Scopes $Scopes
-        }
-        # Connect using service principal authentication
-        else {
-          Write-Host "Connecting to Microsoft Graph using service principal authentication..."
-          $SecureSecret = ConvertTo-SecureString -String $ClientSecret -AsPlainText -Force
-          $Credential = New-Object System.Management.Automation.PSCredential($ClientId, $SecureSecret)
-          Connect-MgGraph -TenantId $TenantId -ClientId $ClientId -ClientSecretCredential $Credential
-        }
-  
-          # Verify connection
-          $Context = Get-MgContext
-          if ($Context) {
-            Write-Host "Successfully connected to Microsoft Graph API"
-            Write-Host "Tenant ID: $($Context.TenantId)"
-            Write-Host "Account: $($Context.Account)"
-            Write-Host "Scopes: $($Context.Scopes -join ', ')"
-            return $true
-          }
-          else {
-            throw "Failed to establish connection to Microsoft Graph API"
-          }
-      }
-      catch {
-        Write-Error "Error connecting to Microsoft Graph API: $_"
-        return $false
-      }
-    }
-
-    end {
-
-    }
-
-
-
-    
-
-  
   }
 
   Write-Host "    - Complete"
