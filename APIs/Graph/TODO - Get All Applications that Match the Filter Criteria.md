@@ -1,0 +1,148 @@
+Get all applications that match the filter criteria "isof('microsoft.graph.win32LobApp)" and expand all properties.
+
+```powershell
+# Intune - Get Applications
+$API_Route  = "deviceAppManagement/mobileApps"
+$API_Filter = "?`$filter=(isof('microsoft.graph.win32LobApp'))&`$expand=*"
+$Temp_Intune_Applications = (Invoke-MgGraphRequest -Uri "$($API_Root_GraphBeta)$($API_Route)$($API_Filter)" -Method GET -OutputType PSObject).value
+```
+
+```yaml
+@odata.type                     : #microsoft.graph.win32LobApp
+id                              : 71fa4581-1cc7-40ee-9040-b77b9bcaa419
+displayName                     : Nessus Agent (x64)
+description                     : Nessus Agent (x64)
+publisher                       : Tenable
+largeIcon                       :
+createdDateTime                 : 5/21/2025 4:46:31 PM
+lastModifiedDateTime            : 5/21/2025 4:46:31 PM
+isFeatured                      : False
+privacyInformationUrl           :
+informationUrl                  :
+owner                           :
+developer                       :
+notes                           :
+uploadState                     : 1
+publishingState                 : published
+isAssigned                      : True
+roleScopeTagIds                 : {}
+dependentAppCount               : 0
+supersedingAppCount             : 0
+supersededAppCount              : 0
+committedContentVersion         : 1
+fileName                        : NessusAgent-10.8.2-x64.intunewin
+size                            : 65227136
+installCommandLine              : MsiExec.exe /i "NessusAgent-10.8.2-x64.msi" /qn /l*v "%FSI_Directory_Logs%\Applications\Install\Tenable,Inc._NessusAgent(x64)_10.8.2.20009_Install.log" NESSUS_GROUPS="Test Group"
+                                  NESSUS_SERVER="fedcloud.tenable.com:443" NESSUS_KEY=60c4b50e67576d2ae159d056ab548c4f67ca1024ca37e16b984bc5f9254b8c83
+uninstallCommandLine            : MsiExec.exe /x {8BDE7E7C-9AC3-4255-BC0A-A1109B440107} /qn /l*v "%FSI_Directory_Logs%\Applications\Uninstall\Tenable,Inc._NessusAgent(x64)_10.8.2.20009_Uninstall.log"
+applicableArchitectures         : x86,x64
+allowedArchitectures            :
+minimumFreeDiskSpaceInMB        :
+minimumMemoryInMB               :
+minimumNumberOfProcessors       :
+minimumCpuSpeedInMHz            :
+setupFilePath                   : NessusAgent-10.8.2-x64.msi
+minimumSupportedWindowsRelease  : 1607
+displayVersion                  : 10.8.2.20009
+allowAvailableUninstall         : True
+minimumSupportedOperatingSystem : @{v8_0=False; v8_1=False; v10_0=False; v10_1607=True; v10_1703=False; v10_1709=False; v10_1803=False; v10_1809=False; v10_1903=False; v10_1909=False; v10_2004=False; v10_2H20=False; v10_21H1=False}
+detectionRules                  : {@{@odata.type=#microsoft.graph.win32LobAppPowerShellScriptDetection; enforceSignatureCheck=False; runAs32Bit=False; scriptContent=PCMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCiAgICBSZWdpc3RyeSBEZXRlY3Rpb24gTG9naWMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoNCiAgICBBdXRob3I6ICAgICAgICAgRHVzdGluIEVzdGVzDQogICAgQ3JlYXRlZDogICAgICAgIDIwMTctMDMtMTMNCiAgICBDb3B5cmlnaHQ6ICAgICAgV 
+                                  ml2aWRSb2NrIExMQyB8IEFsbCBSaWdodHMgUmVzZXJ2ZWQNCiAgICBXZWJzaXRlOgkgICAgaHR0cHM6Ly93d3cudml2aWRyb2NrLmNvbQ0KICAgIFZlcnNpb246ICAgICAgICAxLjYNCg0KICAgIFB1cnBvc2U6IFVzZWQgdG8gZGV0ZWN0IGFuIGFwcGxpY2F0aW9ucyBpbnN0YWxsY 
+                                  XRpb24gYmFzZWQgb24gcmVnaXN0cnkgdmFsdWVzIGZvdW5kIA0KDQogICAgRnVuY3Rpb246IA0KICAgICAgICAxLiAJU2VhcmNoZXMgdGhlIHNwZWNpZmllZCByZWdpc3RyeSBsb2NhdGlvbnMgaW4gdGhlIGhhc2ggdGFibGUgdG8gcG9wdWxhdGUgYSBsaXN0IG9mIGtleXMgDQogI 
+                                  CAgICAgIDIuIAlDaGVja3MgdGhlIHByb3BlcnR5IHZhbHVlcyBvZiBlYWNoIGtleSByZXR1cm5lZCB0byBzZWUgaWYgYm90aCB0aGUgUHVibGlzaGVyIGFuZCBEaXNwbGF5TmFtZSBhcmUgbGlrZSB0aGUgVmFsdWVzIHNwZWNpZmllZCANCiAgICAgICAgMy4gCUl0IHRoZW4gY2hlY 
+                                  2tzIHRvIHNlZSBpZiB0aGUgRGlzcGxheVZlcnNpb24gbWF0Y2hlcyB0aGUgZGVzaXJlZCB2YWx1ZSB1c2luZyB0aGUgc3BlY2lmaWVkIGZpZWxkIA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gIz4NCg0KICAgICMgU3BlY2lmeSB0aGUgRGV0ZWN0aW9uIFZhcmlhYmxlcw0KICAgICMgICBXaWxkY2FyZHMgU3VwcG9ydGVkOiBodHRwczovL2RvY3MubWljcm9zb2Z0LmNvbS9lbi11c 
+                                  y9wb3dlcnNoZWxsL21vZHVsZS9taWNyb3NvZnQucG93ZXJzaGVsbC5jb3JlL2Fib3V0L2Fib3V0LXdpbGRjYXJkcz92aWV3PXBvd2Vyc2hlbGwtNy4yDQogICAgICAgICRBcHBQdWJsaXNoZXIgPSAiVGVuYWJsZSwgSW5jLiINCiAgICAgICAgJEFwcERpc3BsYXlOYW1lID0gIk5lc 
+                                  3N1cyBBZ2VudCAoeDY0KSINCiAgICAgICAgJEFwcERpc3BsYXlWZXJzaW9uID0gIjEwLjguMi4yMDAwOSINCg0KICAgICMgU3VwcG9ydGVkIE9wZXJhdG9ycyAoc3RyaW5ncyBpZ25vcmUgdGhpcyBhbmQgdXNlIC1lcSBvbmx5IHNpbmNlIHRoZXkgY2Fubm90IGJlIGNvbXBhcmVkI 
+                                  GJ5IG1hdGggb3BlcmF0b3JzKTogDQogICAgIyAgIEVxdWFsIHRvOiAtZXEgICAgfCAgICBHcmVhdGVyIHRoYW4gb3IgZXF1YWwgdG86IC1nZSANCiAgICAgICAgJFZlcnNpb25PcGVyYXRvciA9ICItZ2UiDQoNCiAgICAjIFJlZ2lzdHJ5IExvY2F0aW9uczogMzItYml0LCA2NC1ia 
+                                  XQsIGFuZCBDdXJyZW50IFVzZXIgSW5zdGFsbGF0aW9uIA0KICAgICAgICAkUmVnaXN0cnlMb2NhdGlvbnMgPSBAKCANCiAgICAgICAgICAgICJIS0xNOlxTT0ZUV0FSRVxNaWNyb3NvZnRcV2luZG93c1xDdXJyZW50VmVyc2lvblxVbmluc3RhbGwiLCANCiAgICAgICAgICAgICJIS 
+                                  0xNOlxTT0ZUV0FSRVxXb3c2NDMyTm9kZVxNaWNyb3NvZnRcV2luZG93c1xDdXJyZW50VmVyc2lvblxVbmluc3RhbGwiDQogICAgICAgICAgICAiSEtDVTpcU09GVFdBUkVcTWljcm9zb2Z0XFdpbmRvd3NcQ3VycmVudFZlcnNpb25cVW5pbnN0YWxsIiANCiAgICAgICAgKQ0KDQogI 
+                                  CAgIyBEZWxheSBEZXRlY3Rpb24gaWYgTmVjZXNzYXJ5DQogICAgICAgICNTdGFydC1TbGVlcCAtU2Vjb25kcyAxMA0KDQoNCjwjIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgRG8gTm90IEVkaXQgQmVsb3cgVGhpcyBMaW5lDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAjPg0KICAgICMgU2V0IERlZmF1bHQgVmFsdWUgQmVmb3JlIFByb2Nlc3NpbmcNCiAgICAgICAgJE92ZXJhbGxEZXRlY3Rpb24gPSAkZmFsc2UNCg0KICAgICMgRGV0ZXJtaW5lIHRoZSBEYXRhIFR5cGUgb 
+                                  2YgdGhlIFZlcnNpb24gVmFsdWUgUHJvdmlkZWQgDQogICAgICAgIGlmICgkQXBwRGlzcGxheVZlcnNpb24gLW1hdGNoICJeW1xkXC5dKyQiKSB7DQogICAgICAgICAgICAkVmVyc2lvbkRhdGFUeXBlID0gIkludGVnZXIiIA0KICAgICAgICB9DQogICAgICAgIGVsc2Ugew0KICAgI 
+                                  CAgICAgICAgJFZlcnNpb25EYXRhVHlwZSA9ICJTdHJpbmciDQogICAgICAgIH0NCg0KICAgICMgUGVyZm9ybSB0aGUgRGV0ZWN0aW9uDQogICAgICAgIGZvcmVhY2ggKCRSZWdpc3RyeUxvY2F0aW9uIGluICRSZWdpc3RyeUxvY2F0aW9ucykgew0KDQogICAgICAgICAgICAjIEVuc 
+                                  3VyZSBSZWdpc3RyeSBLZXkgRXhpc3RzIEJlZm9yZSBDb250aW51aW5nDQogICAgICAgICAgICAgICAgaWYgKChUZXN0LVBhdGggLVBhdGggJFJlZ2lzdHJ5TG9jYXRpb24pIC1lcSAkdHJ1ZSkgew0KICAgICAgICAgICAgICAgICAgICAkS2V5cyA9IEdldC1DaGlsZGl0ZW0gJFJlZ
+                                  2lzdHJ5TG9jYXRpb24NCg0KICAgICAgICAgICAgICAgICAgICBmb3JlYWNoICgkS2V5IGluICRLZXlzKSB7DQogICAgICAgICAgICAgICAgICAgICAgICAjIEZpbmQgYW5kIE1hdGNoIFB1Ymxpc2hlciAmIERpc3BsYXlOYW1lIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  GlmICgoJEtleS5HZXRWYWx1ZSgiUHVibGlzaGVyIikgLWxpa2UgJEFwcFB1Ymxpc2hlcikgLWFuZCAoJEtleS5HZXRWYWx1ZSgiRGlzcGxheU5hbWUiKSAtbGlrZSAkQXBwRGlzcGxheU5hbWUpKSB7DQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBQcm9jZXNzI 
+                                  EJhc2VkIG9uIHRoZSBWZXJzaW9uIERhdGEgVHlwZSANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmICgkVmVyc2lvbkRhdGFUeXBlIC1lcSAiU3RyaW5nIikgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICMgU3RyaW5ncyBDY 
+                                  W4gT25seSBVc2UgRXF1YWxzIFNvIE5vIElmL1RoZW4gZm9yIFZlcnNpb24gT3BlcmF0b3IgaXMgVXNlZA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZiAoJEtleS5HZXRWYWx1ZSgiRGlzcGxheVZlcnNpb24iKSAtZXEgJEFwcERpc3BsYXlWZ 
+                                  XJzaW9uKSB7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICR0cnVlDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgICAgICAgICAgICAgI
+                                  CAgICAgICAgICAgICAgICAgZWxzZSB7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICRmYWxzZSANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZWxzZWlmICgkVmVyc2lvbkRhdGFUeXBlIC1lcSAiSW50ZWdlciIpIHsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIEZpbmQgYW5kI 
+                                  E1hdGNoIERpc3BsYXlWZXJzaW9uIFVzaW5nIFVzZXItU3VwcGxpZWQgT3BlcmF0b3IgTG9naWMNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBFcXVhbCBUbw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgaWYgKCRWZXJzaW9uT3BlcmF0b3IgLWVxICItZXEiKSB7IA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIChbU3lzdGVtLlZlcnNpb25dJEtleS5HZXRWYWx1ZSgiRGlzcGxheVZlcnNpb24iKSAtZXEgW1N5c3RlbS5WZXJza 
+                                  W9uXSRBcHBEaXNwbGF5VmVyc2lvbikgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICR0cnVlDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVsc2Ugew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICRmYWxzZSANCiAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICMgR3JlYXRlciBUaGFuIC8gR 
+                                  XF1YWwgVG8NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmICgkVmVyc2lvbk9wZXJhdG9yIC1lcSAiLWdlIikgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIChbU3lzdGVtLlZlc 
+                                  nNpb25dJEtleS5HZXRWYWx1ZSgiRGlzcGxheVZlcnNpb24iKSAtZ2UgW1N5c3RlbS5WZXJzaW9uXSRBcHBEaXNwbGF5VmVyc2lvbikgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICR0c 
+                                  nVlDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVsc2Ugew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICRmYWxzZSANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICB9DQoNCjwjIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgQWRkIFN1Yi1kZXRlY3Rpb24gTG9naWMgTW9kdWxlcyBCZWxvdyBUaGlzIExpbmUgKElmIE5lZWRlZCkNCi0tLS0tL
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICM+DQoNCg0KDQoNCg0KDQoNCg0KDQoNCjwjIC0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgRGV0ZWN0aW9uIFJlc3VsdHMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgRmluYWwgZGV0ZWN0aW9uIHJlc3VsdHMgYmFzZWQgb24gdGhlIHJldHVybiBhb 
+                                  mQgbG9naWMgb2YgdGhlIGluc3RhbGwgbWFpbiBtb2R1bGUgYW5kIHRoZSBzdWItZGV0ZWN0aW9uIGxvZ2ljIG1vZHVsZXMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICM+DQogICAgIyBXbHJpdGUgT3V0cHV0IG9mIHRoZSBPdmVyYWxsRGV0ZWN0aW9uIFZhcmlhYmxlIA0KICAgICAgICBpZiAoJE92ZXJhbGxEZXRlY3Rpb24gLWVxICR0cnVlKSB7DQogICAgICAgICAgICBXcml0Z 
+                                  S1Ib3N0ICJBcHBsaWNhdGlvbiBpcyBpbnN0YWxsZWQiIA0KICAgICAgICB9DQogICAgICAgIGVsc2VpZiAoJE92ZXJhbGxEZXRlY3Rpb24gLWVxICRmYWxzZSkgew0KICAgICAgICAgICAgIyBEb24ndCBXcml0ZSBBbnkgT3V0cHV0DQogICAgICAgIH0=}}
+requirementRules                : {}
+rules                           : {@{@odata.type=#microsoft.graph.win32LobAppPowerShellScriptRule; ruleType=detection; displayName=; enforceSignatureCheck=False; runAs32Bit=False; runAsAccount=; scriptContent=PCMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCiAgICBSZWdpc3RyeSBEZXRlY3Rpb24gTG9naWMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoNCiAgICBBdXRob3I6ICAgICAgICAgRHVzdGluIEVzdGVzDQogICAgQ3JlYXRlZDogICAgICAgI 
+                                  DIwMTctMDMtMTMNCiAgICBDb3B5cmlnaHQ6ICAgICAgVml2aWRSb2NrIExMQyB8IEFsbCBSaWdodHMgUmVzZXJ2ZWQNCiAgICBXZWJzaXRlOgkgICAgaHR0cHM6Ly93d3cudml2aWRyb2NrLmNvbQ0KICAgIFZlcnNpb246ICAgICAgICAxLjYNCg0KICAgIFB1cnBvc2U6IFVzZWQgd 
+                                  G8gZGV0ZWN0IGFuIGFwcGxpY2F0aW9ucyBpbnN0YWxsYXRpb24gYmFzZWQgb24gcmVnaXN0cnkgdmFsdWVzIGZvdW5kIA0KDQogICAgRnVuY3Rpb246IA0KICAgICAgICAxLiAJU2VhcmNoZXMgdGhlIHNwZWNpZmllZCByZWdpc3RyeSBsb2NhdGlvbnMgaW4gdGhlIGhhc2ggdGFib 
+                                  GUgdG8gcG9wdWxhdGUgYSBsaXN0IG9mIGtleXMgDQogICAgICAgIDIuIAlDaGVja3MgdGhlIHByb3BlcnR5IHZhbHVlcyBvZiBlYWNoIGtleSByZXR1cm5lZCB0byBzZWUgaWYgYm90aCB0aGUgUHVibGlzaGVyIGFuZCBEaXNwbGF5TmFtZSBhcmUgbGlrZSB0aGUgVmFsdWVzIHNwZ 
+                                  WNpZmllZCANCiAgICAgICAgMy4gCUl0IHRoZW4gY2hlY2tzIHRvIHNlZSBpZiB0aGUgRGlzcGxheVZlcnNpb24gbWF0Y2hlcyB0aGUgZGVzaXJlZCB2YWx1ZSB1c2luZyB0aGUgc3BlY2lmaWVkIGZpZWxkIA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gIz4NCg0KICAgICMgU3BlY2lmeSB0aGUgRGV0ZWN0aW9uIFZhcmlhYmxlcw0KICAgICMgICBXaWxkY2FyZHMgU3VwcG9ydGVkO 
+                                  iBodHRwczovL2RvY3MubWljcm9zb2Z0LmNvbS9lbi11cy9wb3dlcnNoZWxsL21vZHVsZS9taWNyb3NvZnQucG93ZXJzaGVsbC5jb3JlL2Fib3V0L2Fib3V0LXdpbGRjYXJkcz92aWV3PXBvd2Vyc2hlbGwtNy4yDQogICAgICAgICRBcHBQdWJsaXNoZXIgPSAiVGVuYWJsZSwgSW5jL 
+                                  iINCiAgICAgICAgJEFwcERpc3BsYXlOYW1lID0gIk5lc3N1cyBBZ2VudCAoeDY0KSINCiAgICAgICAgJEFwcERpc3BsYXlWZXJzaW9uID0gIjEwLjguMi4yMDAwOSINCg0KICAgICMgU3VwcG9ydGVkIE9wZXJhdG9ycyAoc3RyaW5ncyBpZ25vcmUgdGhpcyBhbmQgdXNlIC1lcSBvb 
+                                  mx5IHNpbmNlIHRoZXkgY2Fubm90IGJlIGNvbXBhcmVkIGJ5IG1hdGggb3BlcmF0b3JzKTogDQogICAgIyAgIEVxdWFsIHRvOiAtZXEgICAgfCAgICBHcmVhdGVyIHRoYW4gb3IgZXF1YWwgdG86IC1nZSANCiAgICAgICAgJFZlcnNpb25PcGVyYXRvciA9ICItZ2UiDQoNCiAgICAjI 
+                                  FJlZ2lzdHJ5IExvY2F0aW9uczogMzItYml0LCA2NC1iaXQsIGFuZCBDdXJyZW50IFVzZXIgSW5zdGFsbGF0aW9uIA0KICAgICAgICAkUmVnaXN0cnlMb2NhdGlvbnMgPSBAKCANCiAgICAgICAgICAgICJIS0xNOlxTT0ZUV0FSRVxNaWNyb3NvZnRcV2luZG93c1xDdXJyZW50VmVyc 
+                                  2lvblxVbmluc3RhbGwiLCANCiAgICAgICAgICAgICJIS0xNOlxTT0ZUV0FSRVxXb3c2NDMyTm9kZVxNaWNyb3NvZnRcV2luZG93c1xDdXJyZW50VmVyc2lvblxVbmluc3RhbGwiDQogICAgICAgICAgICAiSEtDVTpcU09GVFdBUkVcTWljcm9zb2Z0XFdpbmRvd3NcQ3VycmVudFZlc 
+                                  nNpb25cVW5pbnN0YWxsIiANCiAgICAgICAgKQ0KDQogICAgIyBEZWxheSBEZXRlY3Rpb24gaWYgTmVjZXNzYXJ5DQogICAgICAgICNTdGFydC1TbGVlcCAtU2Vjb25kcyAxMA0KDQoNCjwjIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgRG8gTm90IEVkaXQgQmVsb3cgVGhpcyBMaW5lDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAjPg0KICAgICMgU2V0IERlZmF1bHQgVmFsdWUgQmVmb3JlIFByb2Nlc3NpbmcNCiAgICAgICAgJE92ZXJhbGxEZXRlY3Rpb24gPSAkZmFsc2UNC 
+                                  g0KICAgICMgRGV0ZXJtaW5lIHRoZSBEYXRhIFR5cGUgb2YgdGhlIFZlcnNpb24gVmFsdWUgUHJvdmlkZWQgDQogICAgICAgIGlmICgkQXBwRGlzcGxheVZlcnNpb24gLW1hdGNoICJeW1xkXC5dKyQiKSB7DQogICAgICAgICAgICAkVmVyc2lvbkRhdGFUeXBlID0gIkludGVnZXIiI 
+                                  A0KICAgICAgICB9DQogICAgICAgIGVsc2Ugew0KICAgICAgICAgICAgJFZlcnNpb25EYXRhVHlwZSA9ICJTdHJpbmciDQogICAgICAgIH0NCg0KICAgICMgUGVyZm9ybSB0aGUgRGV0ZWN0aW9uDQogICAgICAgIGZvcmVhY2ggKCRSZWdpc3RyeUxvY2F0aW9uIGluICRSZWdpc3Rye 
+                                  UxvY2F0aW9ucykgew0KDQogICAgICAgICAgICAjIEVuc3VyZSBSZWdpc3RyeSBLZXkgRXhpc3RzIEJlZm9yZSBDb250aW51aW5nDQogICAgICAgICAgICAgICAgaWYgKChUZXN0LVBhdGggLVBhdGggJFJlZ2lzdHJ5TG9jYXRpb24pIC1lcSAkdHJ1ZSkgew0KICAgICAgICAgICAgI 
+                                  CAgICAgICAkS2V5cyA9IEdldC1DaGlsZGl0ZW0gJFJlZ2lzdHJ5TG9jYXRpb24NCg0KICAgICAgICAgICAgICAgICAgICBmb3JlYWNoICgkS2V5IGluICRLZXlzKSB7DQogICAgICAgICAgICAgICAgICAgICAgICAjIEZpbmQgYW5kIE1hdGNoIFB1Ymxpc2hlciAmIERpc3BsYXlOY 
+                                  W1lIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmICgoJEtleS5HZXRWYWx1ZSgiUHVibGlzaGVyIikgLWxpa2UgJEFwcFB1Ymxpc2hlcikgLWFuZCAoJEtleS5HZXRWYWx1ZSgiRGlzcGxheU5hbWUiKSAtbGlrZSAkQXBwRGlzcGxheU5hbWUpKSB7DQoNCiAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAgIyBQcm9jZXNzIEJhc2VkIG9uIHRoZSBWZXJzaW9uIERhdGEgVHlwZSANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmICgkVmVyc2lvbkRhdGFUeXBlIC1lcSAiU3RyaW5nIikgew0KICAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICMgU3RyaW5ncyBDYW4gT25seSBVc2UgRXF1YWxzIFNvIE5vIElmL1RoZW4gZm9yIFZlcnNpb24gT3BlcmF0b3IgaXMgVXNlZA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZiAoJEtleS5HZXRWYWx1ZSgiR 
+                                  GlzcGxheVZlcnNpb24iKSAtZXEgJEFwcERpc3BsYXlWZXJzaW9uKSB7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICR0cnVlDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgIH0NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZWxzZSB7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICRmYWxzZSANCiAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZWxzZWlmICgkVmVyc2lvbkRhdGFUeXBlIC1lcSAiSW50ZWdlciIpIHsNCiAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAjIEZpbmQgYW5kIE1hdGNoIERpc3BsYXlWZXJzaW9uIFVzaW5nIFVzZXItU3VwcGxpZWQgT3BlcmF0b3IgTG9naWMNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBFcXVhbCBUbw0KICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYgKCRWZXJzaW9uT3BlcmF0b3IgLWVxICItZXEiKSB7IA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIChbU3lzdGVtLlZlcnNpb25dJEtleS5HZXRWYWx1ZSgiR 
+                                  GlzcGxheVZlcnNpb24iKSAtZXEgW1N5c3RlbS5WZXJzaW9uXSRBcHBEaXNwbGF5VmVyc2lvbikgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICR0cnVlDQogICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVsc2Ugew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3Zlc 
+                                  mFsbERldGVjdGlvbiA9ICRmYWxzZSANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICMgR3JlYXRlciBUaGFuIC8gRXF1YWwgVG8NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmICgkVmVyc2lvbk9wZXJhdG9yIC1lcSAiLWdlIikgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgIGlmIChbU3lzdGVtLlZlcnNpb25dJEtleS5HZXRWYWx1ZSgiRGlzcGxheVZlcnNpb24iKSAtZ2UgW1N5c3RlbS5WZXJzaW9uXSRBcHBEaXNwbGF5VmVyc2lvbikgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICR0cnVlDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVsc2Ugew0KICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkT3ZlcmFsbERldGVjdGlvbiA9ICRmYWxzZSANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgI 
+                                  CAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICB9DQoNCjwjIC0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgQWRkIFN1Yi1kZXRlY3Rpb24gTG9naWMgTW9kdWxlcyBCZ 
+                                  WxvdyBUaGlzIExpbmUgKElmIE5lZWRlZCkNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICM+DQoNC 
+                                  g0KDQoNCg0KDQoNCg0KDQoNCjwjIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgRGV0ZWN0a 
+                                  W9uIFJlc3VsdHMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgRmluYWwgZGV0ZWN0a 
+                                  W9uIHJlc3VsdHMgYmFzZWQgb24gdGhlIHJldHVybiBhbmQgbG9naWMgb2YgdGhlIGluc3RhbGwgbWFpbiBtb2R1bGUgYW5kIHRoZSBzdWItZGV0ZWN0aW9uIGxvZ2ljIG1vZHVsZXMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL 
+                                  S0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICM+DQogICAgIyBXbHJpdGUgT3V0cHV0IG9mIHRoZSBPdmVyYWxsRGV0ZWN0aW9uIFZhcmlhYmxlIA0KICAgICAgICBpZiAoJE92ZXJhbGxEZXRlY3Rpb 
+                                  24gLWVxICR0cnVlKSB7DQogICAgICAgICAgICBXcml0ZS1Ib3N0ICJBcHBsaWNhdGlvbiBpcyBpbnN0YWxsZWQiIA0KICAgICAgICB9DQogICAgICAgIGVsc2VpZiAoJE92ZXJhbGxEZXRlY3Rpb24gLWVxICRmYWxzZSkgew0KICAgICAgICAgICAgIyBEb24ndCBXcml0ZSBBbnkgT 
+                                  3V0cHV0DQogICAgICAgIH0=; operationType=notConfigured; operator=notConfigured; comparisonValue=}}
+installExperience               : @{runAsAccount=system; maxRunTimeInMinutes=20; deviceRestartBehavior=allow}
+returnCodes                     : {@{returnCode=0; type=success}, @{returnCode=1707; type=success}, @{returnCode=3010; type=softReboot}, @{returnCode=1641; type=hardReboot}...}
+msiInformation                  : @{productCode={8BDE7E7C-9AC3-4255-BC0A-A1109B440107}; productVersion=10.8.2.20009; upgradeCode={87CA4190-75C0-4DCC-84DD-DB195F745868}; requiresReboot=False; packageType=perMachine; productName=Nessus Agent        
+                                  (x64); publisher=Tenable, Inc.}
+assignments@odata.context       : https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps('71fa4581-1cc7-40ee-9040-b77b9bcaa419')/microsoft.graph.win32LobApp/assignments
+assignments                     : {@{id=219be8f9-9d5a-44e5-99ac-4f8d4121b74a_0_0; intent=available; source=direct; sourceId=; target=; settings=}, @{id=6842f4a8-f92d-4481-be23-d13c42882540_0_0; intent=available; source=direct; sourceId=;
+                                  target=; settings=}}
+categories                      : {}
+relationships@odata.context     : https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps('71fa4581-1cc7-40ee-9040-b77b9bcaa419')/microsoft.graph.win32LobApp/relationships
+relationships                   : {}
+
+```
